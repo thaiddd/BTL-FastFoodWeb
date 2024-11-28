@@ -1,0 +1,124 @@
+<section style="background-image: linear-gradient(180deg, #f6e9da, #adf7ff); padding: 100px">
+    <div class="overly"></div>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="content text-center">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-transparent justify-content-center">
+              <li class="breadcrumb-item"><a routerLink="/" style="font-size: 20px; font-family: Tahoma"><strong>Trang chủ</strong></a></li>
+              <li class="breadcrumb-item active" aria-current="page" style="font-size: 20px; font-family: Tahoma">Giỏ hàng</li>
+            </ol>
+          </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <section class="cart shopping page-wrapper">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+              <div class="product-list">
+                <form class="cart-form">
+                    <table class="table shop_table shop_table_responsive cart" cellspacing="0">
+                        <thead>
+                          <tr>
+                              <th class="product-thumbnail">
+                                <mat-checkbox  name = "checkbox"
+                                               [checked]="allComplete"
+                                               [indeterminate]="someComplete()"
+                                               (change)="setAll($event.checked)"
+                                >
+
+                                </mat-checkbox>
+                              </th>
+                              <th class="product-thumbnail"> </th>
+                              <th class="product-name">Tất cả ({{cartItems.length}} sản phẩm)</th>
+                              <th class="product-price">Đơn giá</th>
+                              <th class="product-quantity">Số lượng</th>
+                              <th class="product-subtotal">Thành tiền</th>
+                              <th class="product-remove"> <img  src="assets/img/trash.svg"> </th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr class="cart_item" *ngFor="let temCartItem of cartItems">
+                            <td>
+                              <mat-checkbox name="checkbox"
+                                            [checked] ="temCartItem.state.valueOf()"
+                                             (click)="flagFuntion(temCartItem)"
+                              >
+
+                              </mat-checkbox>
+                            </td>
+                              <td class="product-thumbnail" data-title="Thumbnail">
+                                <img src="{{temCartItem.product.imageUrl}}" [style.width.px]="fixedWidth" [style.height.px]="fixedHeight" >
+                              </td>
+
+                              <td class="product-name" data-title="Product">
+                                  <a href="#">{{temCartItem.product.productName}}</a>
+                              </td>
+
+                              <td class="product-price" data-title="Price">
+                                  <span class="amount"><span class="currencySymbol"><pre wp-pre-tag-3=""></pre> </span>{{temCartItem.product.price | currency: 'VND'}}</span>
+                              </td>
+                              <td class="product-quantity" data-title="Quantity">
+                                  <div class="quantity">
+                                      <label class="sr-only" >Quantity</label>
+<!--                                      <button class="qty" onclick="increment()">-</button>-->
+                                      <input type="number" id="qty" class="input-text qty text" step="1" min="0" max="9"  value="{{temCartItem.quantity}}"  title="Qty" size="4" (change)="onInputChange(temCartItem,$event)">
+<!--                                      <button class="qty" onclick="decrement()">+</button>-->
+                                  </div>
+                              </td>
+                              <td class="product-subtotal" data-title="Total">
+                                  <span class="amount">
+                                    <span class="currencySymbol">
+                                    <pre wp-pre-tag-3=""></pre>
+                                    </span>{{temCartItem.totalPrice | currency: 'VND'}} </span>
+                              </td>
+                               <td class="product-remove" data-title="Remove">
+<!--                                  <a href="#" class="remove" aria-label="Remove this item" data-product_id="30" data-product_sku="">×</a>-->
+                                 <button style="background: none ; border: none" (click)="openDialog(temCartItem.id)"><img  src="assets/img/trash.svg"></button>
+                              </td>
+                          </tr>
+<!--                          <tr>-->
+<!--                              <td colspan="6" class="actions">-->
+<!--                                  <div class="coupon row justify-content-center" >-->
+<!--&lt;!&ndash;                                    <input type="text" name="coupon_code" class="input-text form-control" id="coupon_code" value="" placeholder="Coupon code">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <button type="button" class="btn btn-black btn-small" name="apply_coupon" value="Apply coupon">Apply coupon</button>&ndash;&gt;-->
+<!--                                    <span class="mt-3 mt-lg-0">-->
+<!--                                      <button type="button" class="btn btn-dark btn-small" name="update_cart" value="Update cart" disabled="">Update cart</button>-->
+<!--                                    </span>-->
+<!--                                  </div>-->
+<!--                                  <input type="hidden" id="woocommerce-cart-nonce" name="woocommerce-cart-nonce" value="27da9ce3e8">-->
+<!--                                  <input type="hidden" name="_wp_http_referer" value="/cart/">-->
+<!--                                </td>-->
+<!--                          </tr>-->
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="cart-info card p-4">
+              <h4 class="mb-4">Cart totals</h4>
+              <ul class="list-unstyled mb-4">
+                <li class="d-flex justify-content-between pb-2 mb-3">
+                  <h5>Tổng tiền</h5>
+                  <span>{{totalPrice| currency: 'VND'}}</span>
+                </li>
+                <li class="d-flex justify-content-between pb-2">
+                  <h5>Tổng tiền</h5>
+                  <span>{{totalPrice | currency: 'VND'}}</span>
+                </li>
+              </ul>
+              <a  (click)="checkout()" class="btn btn-main btn-small">Mua hàng <i class="tf-ion-android-cart"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+

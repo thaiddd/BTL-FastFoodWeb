@@ -1,0 +1,13 @@
+.menu-hidden .metismenu span{
+  display: none!important;
+}
+
+.menu-hidden .metismenu .menu-title{
+  padding: 0!important;
+  display: flex;
+  justify-content: center;
+}
+
+.menu-hidden {
+  width: 56px;
+}

@@ -1,0 +1,77 @@
+<!--&lt;!&ndash; ============================================================== &ndash;&gt;-->
+<!--&lt;!&ndash; Start right Content here &ndash;&gt;-->
+<!--&lt;!&ndash; ============================================================== &ndash;&gt;-->
+<!--<div class="content-page">-->
+<!--  &lt;!&ndash; Start content &ndash;&gt;-->
+<!--  <div class="content">-->
+<!--    <div class="container-fluid">-->
+<!--      <div class="page-title-box">-->
+<!--        <div class="row align-items-center">-->
+<!--          <div class="col-sm-6">-->
+<!--            <h4 class="page-title">Quản lý nhãn hàng</h4>-->
+<!--          </div>-->
+<!--          <div class="col-sm-6">-->
+<!--            <ol class="breadcrumb float-right">-->
+<!--              <button type="button" class="rounded btn-success" style="height: 30px" (click)="onAddBrand()">Thêm nhãn hàng</button>-->
+<!--            </ol>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; end row &ndash;&gt;-->
+<!--      </div>-->
+<!--      &lt;!&ndash; end page-title &ndash;&gt;-->
+
+<!--      &lt;!&ndash; START ROW &ndash;&gt;-->
+<!--      <div class="row">-->
+<!--        <div class="col-xl-12">-->
+<!--          <div class="card m-b-30">-->
+<!--            <div class="card-body">-->
+<!--              <h4 class="mt-0 header-title">Bảng nhãn hàng</h4>-->
+<!--              <div class="table-responsive">-->
+<!--                <table class="table table-hover">-->
+<!--                  <thead>-->
+<!--                  <tr>-->
+<!--                    <th scope="col">ID</th>-->
+<!--                    <th scope="col">Tên nhãn hàng</th>-->
+<!--                    <th scope="col">Mô tả</th>-->
+<!--                    <th scope="col"></th>-->
+
+<!--                  </tr>-->
+<!--                  </thead>-->
+<!--                  <tbody>-->
+<!--                  <tr *ngFor="let item of brands">-->
+<!--                    <td>{{item.id}}</td>-->
+<!--                    <td><span class="badge badge-success">{{item.brandName}}</span></td>-->
+<!--                    <td>{{item.description}}</td>-->
+
+<!--                    <td>-->
+<!--                      <div class="d-flex flex-column">-->
+<!--                        <button class="btn btn-primary p-2 w-50" (click)="onEditCategory(item)" >Sửa</button>-->
+<!--                        <button class="btn btn-danger p-2 w-50 mt-1" (click)="onDeleteCategory(item)" >Xóa</button>-->
+<!--                      </div>-->
+<!--                    </td>-->
+<!--                  </tr>-->
+<!--                  </tbody>-->
+<!--                </table>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--      </div>-->
+<!--      &lt;!&ndash; END ROW &ndash;&gt;-->
+
+<!--    </div>-->
+<!--    &lt;!&ndash; container-fluid &ndash;&gt;-->
+
+<!--  </div>-->
+<!--  &lt;!&ndash; content &ndash;&gt;-->
+
+<!--</div>-->
+<!--&lt;!&ndash; ============================================================== &ndash;&gt;-->
+<!--&lt;!&ndash; End Right content here &ndash;&gt;-->
+<!--&lt;!&ndash; ============================================================== &ndash;&gt;-->
+<!--&lt;!&ndash;<app-editprofile *ngIf="true"></app-editprofile>&ndash;&gt;-->
+
+<!--<app-brandform [mode]="formMode" [isShow]="isShowForm" [data]="brandSelected"-->
+<!--                  (afterAdd)="onAfterAddBrand()" (afterEdit)="onAfterEditBrand()"-->
+<!--                  (isShowChange)="onIsShowChange($event)" *ngIf="isShowForm"></app-brandform>-->

@@ -1,0 +1,48 @@
+.profile-popup .media{
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.profile-popup {
+  padding: 0!important;
+  margin: 0!important;
+  border: none!important;
+  width: 190px!important;
+}
+
+.profile-popup .media a {
+  background-color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  height: 40px;
+  align-items: center;
+}
+
+.profile-popup .media a:hover {
+  background-color: #F9725D;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+
+.has-search .form-control {
+  padding-left: 2.375rem;
+}
+
+.has-search input {
+  height: 36px;
+  font-size: 14px;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+}

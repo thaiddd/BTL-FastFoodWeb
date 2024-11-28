@@ -1,0 +1,92 @@
+<!--<div class="modal d-block" id="userForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"-->
+<!--     aria-hidden="true">-->
+<!--  <div class="modal-dialog">-->
+<!--    <div class="modal-content" style="width: 700px">-->
+<!--      <ng-template #customLoadingTemplate>-->
+<!--        <div class="custom-class">-->
+<!--        </div>-->
+<!--      </ng-template>-->
+<!--      <ngx-loading-->
+<!--        [show]="loading"-->
+<!--        [config]="{ backdropBorderRadius: '3px' }"-->
+<!--        [template]="customLoadingTemplate"-->
+<!--      ></ngx-loading>-->
+
+<!--      <div class="container rounded bg-white w-100">-->
+<!--        <div class="row w-100">-->
+<!--          <div class="col-md-5 border-right">-->
+<!--            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5"-->
+<!--                                                                                         width="150px"-->
+<!--                                                                                         alt="Ảnh"-->
+<!--                                                                                         src="http://localhost:8081/image/{{data.imageUrl}}"><span-->
+<!--              class="font-weight-bold">{{data.fullName}}</span><span-->
+<!--              class="text-black-50">{{data.email}}</span><span> </span></div>-->
+<!--          </div>-->
+<!--          <div class="col-md-7 border-right">-->
+<!--            <div class="p-3 py-5">-->
+<!--              <div class="d-flex justify-content-between align-items-center mb-3">-->
+<!--                <h4 class="text-right">Thông tin người dùng</h4>-->
+<!--              </div>-->
+<!--              &lt;!&ndash;              <div class="row mt-2">&ndash;&gt;-->
+<!--              &lt;!&ndash;                <div class="col-md-6"><label class="labels">Tên</label><input type="text" class="form-control"&ndash;&gt;-->
+<!--              &lt;!&ndash;                                                                               placeholder="first name" value=""></div>&ndash;&gt;-->
+<!--              &lt;!&ndash;                <div class="col-md-6"><label class="labels">Họ</label><input type="text" class="form-control"&ndash;&gt;-->
+<!--              &lt;!&ndash;                                                                                  value="" placeholder="surname"></div>&ndash;&gt;-->
+<!--              &lt;!&ndash;              </div>&ndash;&gt;-->
+<!--              <div class="row mt-3">-->
+<!--                <div class="col-md-12"><label class="labels">Họ tên</label><input type="text"-->
+<!--                                                                                  class="form-control"-->
+<!--                                                                                  [(ngModel)]="data.fullName"></div>-->
+<!--                <div class="col-md-12"><label class="labels">Số điện thoại</label><input type="text"-->
+<!--                                                                                         class="form-control"-->
+<!--                                                                                         [(ngModel)]="data.phoneNumber"></div>-->
+<!--                <div class="col-md-12"><label class="labels">Địa chỉ</label><input type="text"-->
+<!--                                                                                   class="form-control"-->
+<!--                                                                                   [(ngModel)]="data.address"></div>-->
+<!--                <div class="col-md-12"><label class="labels">Email</label><input type="text"-->
+<!--                                                                                   class="form-control"-->
+<!--                                                                                   [(ngModel)]="data.email"></div>-->
+<!--                <div class="col-md-12"><label class="labels">Tên đăng nhập</label><input type="text"-->
+<!--                                                                                         class="form-control"-->
+<!--                                                                                         [(ngModel)]="data.username" [disabled]="mode == FormMode.Edit"></div>-->
+<!--                <div class="col-md-12" *ngIf="mode == FormMode.Add"><label class="labels">Mật khẩu</label><input type="password" [(ngModel)]="data.password"-->
+<!--                                                                                    class="form-control"-->
+<!--                ></div>-->
+
+<!--                <div class="col-md-12 d-flex justify-content-center mt-4">-->
+<!--                  <div class="form-check form-check-inline">-->
+<!--                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" [(ngModel)]="role.ADMIN" value="ADMIN">-->
+<!--                    <label class="form-check-label" for="inlineCheckbox1">Quản trị</label>-->
+<!--                  </div>-->
+<!--                  <div class="form-check form-check-inline">-->
+<!--                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" [(ngModel)]="role.SELLER" value="SELLER">-->
+<!--                    <label class="form-check-label" for="inlineCheckbox2">Người bán</label>-->
+<!--                  </div>-->
+<!--                  <div class="form-check form-check-inline">-->
+<!--                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" [(ngModel)]="role.USER" value="USER">-->
+<!--                    <label class="form-check-label" for="inlineCheckbox3">Người mua</label>-->
+<!--                  </div>-->
+<!--                </div>-->
+
+<!--              </div>-->
+<!--              <div class="mt-5 text-center">-->
+<!--                <button class="btn btn-primary profile-button" type="button" *ngIf="mode == FormMode.Add" (click)="onSaveUser()">Lưu</button>-->
+<!--                <button class="btn btn-primary profile-button" type="button" *ngIf="mode == FormMode.Edit" (click)="onSaveUser()">Cập nhật-->
+<!--                </button>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <button class="btn btn-icon btn-close" (click)="isShowChange(false)">-->
+<!--            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">-->
+<!--              <path fill="currentColor"-->
+<!--                    d="M24 2.4L21.6 0L12 9.6L2.4 0L0 2.4L9.6 12L0 21.6L2.4 24l9.6-9.6l9.6 9.6l2.4-2.4l-9.6-9.6z"/>-->
+<!--            </svg>-->
+<!--          </button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+
+<!--</div>-->
+

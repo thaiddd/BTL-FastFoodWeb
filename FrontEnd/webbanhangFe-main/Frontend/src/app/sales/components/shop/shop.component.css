@@ -1,0 +1,40 @@
+.nav-item {
+    height: 60px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: 80px;
+    padding: 0 20px 0 12px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.nav-item:hover {
+    background-color: #E7E7E7;
+    border-radius: 4px;
+}
+
+.nav-item img{
+    height: 34px;
+    margin-right: 9px;
+}
+
+.nav-item label{
+    min-width: fit-content;
+    text-overflow: ellipsis;
+    margin: 0;
+    cursor: pointer;
+}
+.product-wrap {
+  width: 100%; /* Chiều rộng của khung */
+  height: 100%;
+  position: relative;
+  overflow: hidden; /* Để ảnh không bị vượt ra ngoài khung */
+}
+.product-wrap img {
+  position: ;
+  /* Để định vị ảnh bên trong khung */
+  top: 0; left: 0; width: 100%; /* Chiều rộng của ảnh */ height: 100%; /* Chiều cao của ảnh */
+  object-fit: cover; /* Đảm bảo ảnh lấp đầy khung mà không bị biến dạng */
+}

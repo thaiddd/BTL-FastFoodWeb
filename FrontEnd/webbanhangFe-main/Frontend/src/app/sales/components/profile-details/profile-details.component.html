@@ -1,0 +1,313 @@
+
+
+<section style="background-image: linear-gradient(180deg, #f6e9da, #adf7ff); padding: 100px">
+  <ng-template #customLoadingTemplate>
+    <div class="custom-class">
+    </div>
+  </ng-template>
+  <ngx-loading
+    [show]="loading"
+    [config]="{ backdropBorderRadius: '3px' }"
+    [template]="customLoadingTemplate"
+  ></ngx-loading>
+
+  <div class="overly"></div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="content text-center">
+          <h1 class="mb-3"></h1>
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-transparent justify-content-center">
+              <li class="breadcrumb-item"><a routerLink="/" style="font-size: 20px; font-family: Tahoma"><strong>Trang chủ</strong></a></li>
+              <li class="breadcrumb-item active" aria-current="page" style="font-size: 20px; font-family: Tahoma">Profile</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="user-dashboard page-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-5 col-sm-12 col-lg-3">
+<!--        <div class="nav flex-column nav-pills" (click)="tabIndex=1">-->
+<!--          <a class="nav-link" [ngClass]="{'active' : tabIndex == 1}">Thông tin tài khoản</a>-->
+<!--        </div>-->
+<!--        <div class="nav flex-column nav-pills" (click)="tabIndex=2">-->
+<!--          <a class="nav-link" [ngClass]="{'active' : tabIndex == 2}">Đơn hàng của tôi</a>-->
+<!--        </div>-->
+<!--        <div class="nav flex-column nav-pills" (click)="tabIndex=3">-->
+<!--          <a class="nav-link" routerLink="/profile-details" [ngClass]="{'active' : tabIndex == 3}">Đánh giá sản phẩm</a>-->
+<!--        </div>-->
+<!--        <div class="nav flex-column nav-pills" (click)="tabIndex=4">-->
+<!--          <a class="nav-link" routerLink="/profile-details" [ngClass]="{'active' : tabIndex == 4}">Sổ địa chỉ</a>-->
+<!--        </div>-->
+<!--        <div class="nav flex-column nav-pills" (click)="tabIndex=5">-->
+<!--          <a class="nav-link" [ngClass]="{'active' : tabIndex == 5}">Nhận xét của tôi</a>-->
+<!--        </div>-->
+<!--        <div class="nav flex-column nav-pills" (click)="tabIndex=6">-->
+<!--          <a class="nav-link" routerLink="/profile-details" [ngClass]="{'active' : tabIndex == 6}">Thêm sản phẩm</a>-->
+<!--        </div>-->
+<!--        <div class="nav flex-column nav-pills" (click)="tabIndex=7">-->
+<!--          <a class="nav-link" routerLink="/profile-details" [ngClass]="{'active' : tabIndex == 7}">Thêm danh mục</a>-->
+<!--        </div>-->
+<!--        <div class="nav flex-column nav-pills">-->
+<!--          <a class="nav-link" routerLink="/logout">Đăng xuất</a>-->
+<!--        </div>-->
+      </div>
+
+      <div class="col-12 col-md-7 col-sm-12 col-lg-9">
+        <!-- tab Thông tin tài khoản -->
+        <div class="tab-pane fade show active" id="settings" role="tabpanel" [hidden]="!(tabIndex==1)">
+          <div class="acccount-settings">
+            <h4 class="mb-4" style="font-size: 20px"><strong>Thông tin tài khoản</strong></h4>
+            <div>
+              <div class="form-row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label>Tên</label>
+                    <input type="text" class="form-control" placeholder="" [(ngModel)]="user.fullName">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" class="form-control" placeholder="" [(ngModel)]="user.username">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group mb-4">
+                <label>Địa chỉ </label>
+                <input type="text" class="form-control" placeholder="" [(ngModel)]="user.address">
+              </div>
+              <div class="form-group mb-4">
+                <label>Email </label>
+                <input type="text" class="form-control" placeholder="@gmail.com" [(ngModel)]="user.email">
+              </div>
+
+<!--              <div class="form-group mb-4">-->
+<!--                <label>Thay đổi ảnh </label>-->
+<!--                <input type="file" class="form-control"  (change)="onImageUpload($event)">-->
+<!--              </div>-->
+            </div>
+
+            <div class="mt-5">
+              <h4 style="font-size: 20px"><strong>Thay đổi mật khẩu</strong></h4>
+
+              <div class="form-group">
+                <label>Mật khẩu hiện tại </label>
+                <input type="text" class="form-control" placeholder="">
+
+              </div>
+              <div class="form-group">
+                <label>Mật khẩu mới</label>
+                <input type="text" class="form-control" placeholder="" [(ngModel)]="newPassword">
+              </div>
+              <div class="form-group">
+                <label>Xác nhận mật khẩu mới</label>
+                <input type="text" class="form-control" placeholder="">
+              </div>
+
+              <a class="btn btn-dark text-light" (click)="onSaveUser()">Lưu thay đổi</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab quản lý đơn hàng -->
+
+
+        <!-- Tab sổ địa chỉ -->
+<!--        <div [hidden]="!(tabIndex==4)">-->
+<!--          <p>The following addresses will be used on the checkout page by default.</p>-->
+<!--          <div class="account-info">-->
+<!--            <div class="card p-4">-->
+<!--              <h4 class="card-title">Billing info <a routerLink="/edit-address" class="float-right text-sm">Edit</a>-->
+<!--              </h4>-->
+<!--              <address>Jassa Smith<br>-->
+<!--                1491 Ludhiana Street<br>-->
+<!--                Punjab<br>-->
+<!--                India<br>-->
+<!--              </address>-->
+<!--            </div>-->
+
+<!--            <div class="card p-4 mt-4">-->
+<!--              <h4 class="card-title">Shipping info <a routerLink="/edit-address" class="float-right text-sm">Edit</a>-->
+<!--              </h4>-->
+<!--              You have not set up this type of address yet.-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+
+        <!-- Tab Thêm sản phẩm -->
+<!--        <form class="form-horizontal" [hidden]="!(tabIndex==6)" [formGroup]="productForm">-->
+<!--          <fieldset>-->
+
+<!--            &lt;!&ndash; Form Name &ndash;&gt;-->
+<!--            <legend>Thêm sản phẩm</legend>-->
+
+<!--            &lt;!&ndash; Text input&ndash;&gt;-->
+<!--            <div class="form-group">-->
+<!--              <label class="col-md-10 control-label" for="product_name">Tên sản phẩm</label>-->
+<!--              <div class="col-md-10">-->
+<!--                <input id="product_name" name="product_name" formControlName="productName" placeholder="" class="form-control input-md"-->
+<!--                  required="" type="text">-->
+
+<!--              </div>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Text input&ndash;&gt;-->
+<!--            <div class="form-group">-->
+<!--              <label class="col-md-10 control-label">Màu sắc</label>-->
+<!--              <div class="col-md-10">-->
+<!--                <input name="product_name_fr" placeholder=""-->
+<!--                  class="form-control input-md" type="text">-->
+
+<!--              </div>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Select Basic &ndash;&gt;-->
+<!--            <div class="form-group">-->
+<!--              <label class="col-md-10 control-label" for="product_categorie">Danh mục</label>-->
+<!--              <div class="col-md-10">-->
+<!--                <select id="product_categorie" name="product_categorie" class="form-control">-->
+<!--                  <div class="nav-item" href="" *ngFor="let category of categores" >-->
+<!--                    <img width="40px" height="40px" ngSrc="http://localhost:8081/image/{{category['imageUrl']}}" class="rounded" alt="">-->
+<!--                    <label class="text-dark">{{category['categoryName']}}</label>-->
+<!--                  </div>-->
+<!--                </select>-->
+<!--              </div>-->
+<!--            </div>-->
+
+
+<!--            &lt;!&ndash; Text input&ndash;&gt;-->
+<!--            <div class="form-group">-->
+<!--              <label class="col-md-10 control-label" for="available_quantity">Số lượng</label>-->
+<!--              <div class="col-md-10">-->
+<!--                <input id="available_quantity" name="available_quantity" placeholder=""-->
+<!--                  class="form-control input-md" required="" type="text">-->
+
+<!--              </div>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Text input&ndash;&gt;-->
+<!--            <div class="form-group">-->
+<!--              <label class="col-md-10 control-label" for="product_weight">Nhãn hàng</label>-->
+<!--              <div class="col-md-10">-->
+<!--                <input id="product_weight" name="product_weight" placeholder=""-->
+<!--                  class="form-control input-md" required="" type="text">-->
+
+<!--              </div>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Textarea &ndash;&gt;-->
+<!--            <div class="form-group">-->
+<!--              <label class="col-md-10 control-label" for="product_description">Mô tả</label>-->
+<!--              <div class="col-md-10">-->
+<!--                <textarea class="form-control" id="product_description" name="product_description"></textarea>-->
+<!--              </div>-->
+<!--            </div>-->
+
+
+<!--            &lt;!&ndash; Text input&ndash;&gt;-->
+<!--            <div class="form-group">-->
+<!--              <label class="col-md-10 control-label" for="percentage_discount">Giới tính</label>-->
+<!--              <div class="col-md-10">-->
+<!--                <input id="percentage_discount" name="percentage_discount" placeholder=""-->
+<!--                  class="form-control input-md" required="" type="text">-->
+
+<!--              </div>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Text input&ndash;&gt;-->
+<!--            <div class="form-group">-->
+<!--              <label class="col-md-10 control-label" for="stock_alert">Giá</label>-->
+<!--              <div class="col-md-10">-->
+<!--                <input id="stock_alert" name="stock_alert" placeholder="STOCK ALERT" class="form-control input-md"-->
+<!--                  required="" type="number">-->
+
+<!--              </div>-->
+<!--            </div>-->
+
+
+
+<!--            &lt;!&ndash; Text input&ndash;&gt;-->
+<!--            <div class="form-group">-->
+<!--              <label class="col-md-10 control-label" for="approuved_by">APPROUVED BY</label>-->
+<!--              <div class="col-md-10">-->
+<!--                <input id="approuved_by" name="approuved_by" placeholder="APPROUVED BY" class="form-control input-md"-->
+<!--                  required="" type="text">-->
+
+<!--                &lt;!&ndash; File Button &ndash;&gt;-->
+<!--                <div class="form-group">-->
+<!--                  <label class="col-md-10 control-label">Ảnh sản phẩm</label>-->
+<!--                  <div class="col-md-10">-->
+<!--                    <input name="filebutton" class="input-file" type="file">-->
+<!--                  </div>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; Button &ndash;&gt;-->
+<!--                <div class="form-group">-->
+<!--                  <div class="col-md-10">-->
+<!--                    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Thêm</button>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </fieldset>-->
+<!--        </form>-->
+
+        <!-- Tab Thêm danh mục -->
+<!--        <form class="form-horizontal" [formGroup]="categoryForm" (ngSubmit)="saveCategory()" id="addCategoryForm" [hidden]="!(tabIndex==7)">-->
+<!--          <fieldset>-->
+
+<!--            &lt;!&ndash; Form Name &ndash;&gt;-->
+<!--            <legend>Thêm danh mục</legend>-->
+
+<!--            &lt;!&ndash; Text input&ndash;&gt;-->
+<!--            <div class="form-group">-->
+<!--              <label class="col-md-10 control-label" for="product_name">Tên danh mục</label>-->
+<!--              <div class="col-md-10">-->
+<!--                <input formControlName="categoryName" name="category_name" placeholder="Category name" class="form-control input-md"-->
+<!--                       required="true" type="text">-->
+
+<!--              </div>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Text input&ndash;&gt;-->
+<!--            <div class="form-group">-->
+<!--              <label class="col-md-10 control-label" for="product_name_fr">Mô tả</label>-->
+<!--              <div class="col-md-10">-->
+<!--                <input formControlName="description" name="category_description" placeholder="Mô tả"-->
+<!--                       class="form-control input-md" required="false" type="text">-->
+
+<!--              </div>-->
+<!--            </div>-->
+
+<!--                &lt;!&ndash; File Button &ndash;&gt;-->
+<!--                <div class="form-group">-->
+<!--                  <label class="col-md-10 control-label" for="filebutton">Ảnh danh mục</label>-->
+<!--                  <div class="col-md-10">-->
+<!--                    <input (change)="onImageUpload($event)" id="categoryFile" name="image" class="input-file" type="file">-->
+<!--                  </div>-->
+<!--                </div>-->
+
+<!--                &lt;!&ndash; Button &ndash;&gt;-->
+<!--                <div class="form-group">-->
+<!--                  <div class="col-md-10">-->
+<!--                    <button id="btnSaveCategory" class="btn btn-primary">Thêm</button>-->
+<!--                  </div>-->
+<!--                </div>-->
+
+<!--          </fieldset>-->
+<!--        </form>-->
+
+
+      </div>
+    </div>
+  </div>
+</section>

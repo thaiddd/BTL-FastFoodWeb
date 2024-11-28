@@ -1,0 +1,104 @@
+<!-- ============================================================== -->
+<!-- Start right Content here -->
+<!-- ============================================================== -->
+<div class="content-page">
+  <!-- Start content -->
+  <div class="content">
+    <div class="container-fluid">
+      <div class="page-title-box">
+        <div class="row align-items-center">
+          <div class="col-sm-6">
+            <h4 class="page-title">Quản lý người dùng</h4>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-right">
+              <button type="button" class="rounded btn-success" style="height: 30px" (click)="onShowFormAdd()">Thêm
+                người dùng
+              </button>
+            </ol>
+          </div>
+        </div>
+        <!-- end row -->
+      </div>
+      <!-- end page-title -->
+
+      <!-- START ROW -->
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="card m-b-30">
+            <div class="card-body">
+              <h4 class="mt-0 header-title">Danh sách người dùng</h4>
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                  <tr>
+
+                    <th scope="col">STT</th>
+                    <th scope="col">Họ tên</th>
+                    <th scope="col">Tên đăng nhập</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Địa chỉ</th>
+                    <th scope="col">Vai trò</th>
+
+
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let user of users; let i = index;">
+                    <td>{{i+1}}</td>
+                    <td><span class="">{{user.fullName}}</span></td>
+                    <td>{{user.username}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.address}}</td>
+                    <td class="">
+                      <div class="badge-primary badge" *ngFor="let item of user.roles">{{item.name}}</div>
+                    </td>
+
+                    <td>
+                      <div class="d-flex flex-column">
+                        <button class="btn btn-primary p-2 w-50" (click)="onShowFormEdit(user)">Sửa</button>
+                        <button class="btn btn-danger p-2 w-50 mt-1" (click)="onDeleteUser(user)">Xóa</button>
+                      </div>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+                <mat-paginator [pageSizeOptions]="[10,25,50,100]" showFirstLastButtons [pageSize]="pageSize"
+                               [length]="totalItems" (page)=" onChangePage($event)"></mat-paginator>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- END ROW -->
+
+    </div>
+    <!-- container-fluid -->
+
+    <ng-template #customLoadingTemplate>
+      <div class="custom-class">
+      </div>
+    </ng-template>
+    <ngx-loading
+      [show]="loading"
+      [config]="{ backdropBorderRadius: '3px' }"
+      [template]="customLoadingTemplate"
+    ></ngx-loading>
+  </div>
+  <!-- content -->
+
+</div>
+<!-- ============================================================== -->
+<!-- End Right content here -->
+<!-- ============================================================== -->
+<!--<app-editprofile *ngIf="true"></app-editprofile>-->
+
+<app-userform [isShow]="isShowForm"
+              (isShowChanged)="onIsShowFormChange($event)"
+              (afterAdd)="onAfterAddUser()"
+              (afterUpdate)="onAfterUpdateUser()"
+              [mode]="formMode"
+              [data]="user"
+              *ngIf="isShowForm"></app-userform>

@@ -1,0 +1,5 @@
+<app-topbar [toggle]="toggleLeftBar" (toggleChange)="onToggleChange($event)"></app-topbar>
+<div [ngClass]="{'resize-content' : toggleLeftBar}">
+  <router-outlet ></router-outlet>
+</div>
+<app-leftbar [toggle]="toggleLeftBar"></app-leftbar>

@@ -1,0 +1,40 @@
+<div class="account section" style="background-image:url('../../../../assets/images/img_5.png')">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="login-form border p-5" style="background-image: linear-gradient(180deg, #f6e9da, #adf7ff); background-color: #f0f0f0; padding: 20px; border-radius: 5px;nbox-shadow: 0 0 10px rgba(0, 0, 0, 0.7);">
+            <div class="text-center heading">
+              <h2 class="mb-2" style="font-size: 40px; font-family: 'Arial Narrow'"><strong>Đăng nhập</strong></h2>
+              <br>
+              <p class="lead" style="font-family:Tahoma">Chưa có tài khoản?   <a routerLink="/signup" style="font-family: Tahoma; text-decoration: underline">Tạo tài khoản</a></p>
+            </div>
+
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+              <div class="form-group mb-4">
+                <label >Tên đăng nhập</label>
+                <a class="float-right" routerLink="/forgot-password">Quên mật khẩu ?</a>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder=""
+                  formControlName="username"
+                >
+              </div>
+
+              <div class="form-group mb-4">
+                <label >Mật khẩu </label>
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder=""
+                  formControlName="password"
+                >
+              </div>
+              <button class="btn btn-main mt-3 btn-block" type="submit">Đăng nhập</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

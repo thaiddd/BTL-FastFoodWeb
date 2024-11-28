@@ -1,0 +1,107 @@
+<ngx-slick-carousel class="main-slider slider" [config]="slideConfig">
+  <div ngxSlickItem class="slider-item " style="background-image:url('../../../../assets/images/img_1.png')">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-12 offset-lg-6 offset-md-6">
+          <div class="slider-caption">
+            <span class="lead">Gà Rán - Gà Quay</span>
+            <h1 class="mt-2 mb-5"><span class="text-color">30%</span>OFF</h1>
+            <a href="/shop" class="btn btn-main">Shop Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+      </div>
+    </div>
+  </div>
+
+  <div ngxSlickItem class="slider-item" style="background-image:url('../../../../assets/images/img_2.png')">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-12 offset-lg-6 offset-md-6">
+          <div class="slider-caption">
+            <span class="lead">Burger - Mì Ý</span>
+            <h1 class="mt-2 mb-5"><span class="text-color">30%</span> OFF</h1>
+            <a href="/shop" class="btn btn-main">Shop Now</a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+
+      </div>
+    </div>
+  </div>
+
+  <div ngxSlickItem class="slider-item"
+       style="background-image:url('../../../../assets/images/img_3.png'); background-position:50%;background-repeat:no-repeat;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-12 offset-lg-6 offset-md-6">
+          <div class="slider-caption">
+            <span class="lead">Thức ăn nhẹ - Tráng miệng</span>
+            <h1 class="mt-2 mb-5"><span class="text-color">Coo|</span>FRESH</h1>
+            <a href="/shop" class="btn btn-main">Shop Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ngx-slick-carousel>
+
+
+<section class="section products-main">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div>
+          <h2 style="font-family: Verdana; font-size: 30px; text-align: center"><strong>Danh sách sản phẩm</strong></h2>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-lg-3 col-12 col-md-6 col-sm-6 mb-5"
+           *ngFor="let product of products | paginate: { itemsPerPage: pagingData.limit, currentPage: currentPage, totalItems: totalCount }; let i = index">
+        <div class="product">
+          <div class="product-wrap-2">
+            <img src="{{product.imageUrl}}" [style.width.px]="fixedWidth" [style.height.px]="fixedHeight">
+          </div>
+          <div class="product-info">
+            <h2 class="product-title h5 mb-0">{{ product.productName }}</h2>
+          </div>
+          <div class="product-info">
+            <span class="price">
+                        {{ product.price | currency:'VND' }}
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="row d-flex justify-content-center">
+      <pagination-controls previousLabel="Trước" nextLabel="Sau"
+                           (pageChange)="onDataChange($event)"></pagination-controls>
+    </div>
+  </div>
+</section>
+<section>
+  <app-footer></app-footer>
+</section>
+<section>
+  <div style="
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    position: fixed;
+    bottom: 50px;
+    right: -200px;
+    width: 300px;">
+    <div style="width: 200%;">
+      <a id="btnZaloChat" href="https://zalo.me/0348913604" target="_blank" rel="noopener"
+      ><img src="assets/images/zaloicon.png"
+            class="pulse" alt="Zalo Button" width="10%"
+            style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ; color: black;"></a>
+    </div>
+  </div>
+</section>

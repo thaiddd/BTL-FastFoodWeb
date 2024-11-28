@@ -1,0 +1,140 @@
+<!--&lt;!&ndash; ============================================================== &ndash;&gt;-->
+<!--&lt;!&ndash; Start right Content here &ndash;&gt;-->
+<!--&lt;!&ndash; ============================================================== &ndash;&gt;-->
+<!--<div class="content-page">-->
+<!--  &lt;!&ndash; Start content &ndash;&gt;-->
+<!--  <div class="content">-->
+
+<!--    <ng-template #customLoadingTemplate>-->
+<!--      <div class="custom-class">-->
+<!--      </div>-->
+<!--    </ng-template>-->
+<!--    <ngx-loading-->
+<!--      [show]="loading"-->
+<!--      [config]="{ backdropBorderRadius: '3px' }"-->
+<!--      [template]="customLoadingTemplate"-->
+<!--    ></ngx-loading>-->
+
+<!--    <div class="container-fluid">-->
+<!--      <div class="page-title-box">-->
+<!--        <div class="row align-items-center">-->
+<!--          <div class="col-sm-6">-->
+<!--            <h4 class="page-title">Quản lý đơn hàng </h4>-->
+<!--          </div>-->
+<!--          <div class="col-sm-6">-->
+<!--            <ol class="breadcrumb float-right">-->
+<!--            </ol>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; end row &ndash;&gt;-->
+<!--      </div>-->
+<!--      &lt;!&ndash; end page-title &ndash;&gt;-->
+<!--      <div class="row">-->
+<!--        <div class="col-xl-12">-->
+<!--          <div class="card m-b-30">-->
+<!--            <div class="card-body">-->
+<!--              <h4 class="mt-0 header-title">Thông tin tìm kiếm</h4>-->
+<!--              <div class="row">-->
+<!--                <div class="col-3">-->
+<!--                  <mat-label>Từ ngày</mat-label>-->
+<!--                  <div class="col-form-label">-->
+<!--                    <input type="date" name="DepartureDate" class="form-control" [(ngModel)]="fromDate">-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="col-3">-->
+<!--                  <mat-label>Đến ngày</mat-label>-->
+<!--                  <div class="col-form-label">-->
+<!--                    <input type="date" name="DepartureDate" class="form-control" [(ngModel)]="toDate">-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <ol class=" float-right">-->
+<!--                <button type="button" class="rounded btn-success" style="height: 40px" (click)="initData()"><i class="fa fa-search" ></i> Tìm kiếm-->
+<!--                </button>-->
+<!--              </ol>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      &lt;!&ndash; START ROW &ndash;&gt;-->
+<!--      <div class="row">-->
+<!--        <div class="col-xl-12">-->
+<!--          <div class="card m-b-30">-->
+<!--            <div class="card-body">-->
+<!--              <h4 class="mt-0 header-title">Bảng đơn hàng</h4>-->
+<!--              <div class="table-responsive">-->
+<!--                <table class="table table-hover">-->
+<!--                  <thead>-->
+<!--                  <tr>-->
+<!--                    <th scope="col">STT</th>-->
+<!--                    <th scope="col">Trạng thái</th>-->
+<!--                    <th scope="col">Người đặt</th>-->
+<!--                    <th scope="col">Các sản phẩm</th>-->
+<!--                    <th scope="col">Số lượng</th>-->
+<!--                    <th scope="col">Gíá</th>-->
+<!--                    <th scope="col">Ngày đặt</th>-->
+<!--                    <th scope="col">Ngày nhận</th>-->
+<!--                    <th scope="col">Số điện thoại</th>-->
+<!--                    <th scope="col">Địa chỉ</th>-->
+<!--                    <th scope="col">Thao tác</th>-->
+
+<!--                  </tr>-->
+<!--                  </thead>-->
+<!--                  <tbody>-->
+
+<!--                  <tr *ngFor="let order of orders ;let i=index">-->
+<!--                    <td>{{i + 1}}</td>-->
+<!--                    <td><span class="badge badge-success" *ngIf="order.state=='Done'"-->
+<!--                              style="font-size: 15px">{{onChangeTT(order)}}</span>-->
+<!--                      <span class="badge badge-info" style="font-size: 15px"-->
+<!--                            *ngIf="order.state!='Done'">{{onChangeTT(order)}}</span>-->
+<!--                    </td>-->
+<!--                    <td>{{order.fullName}}</td>-->
+<!--                    <td>-->
+<!--                      <ul>-->
+<!--                        <li *ngFor="let item of order.orderDetails">{{ item.product.productName }}</li>-->
+<!--                      </ul>-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                      <ul>-->
+<!--                        <li *ngFor="let item of order.orderDetails">{{ item.quantity }}</li>-->
+<!--                      </ul>-->
+<!--                    </td>-->
+<!--                    <td>{{order.totalPrice}}</td>-->
+<!--                    <td>{{order.dateOfOrder| date:'dd/MM/yyyy'}}</td>-->
+<!--                    <td>{{order.dateOfReceipt|date:'dd/MM/yyyy'}}</td>-->
+<!--                    <td>{{order.phone}}</td>-->
+<!--                    <td>{{order.address}}</td>-->
+<!--                    <td>-->
+<!--                      <div class="d-flex flex-column" *ngIf="order.state!=='Done'">-->
+<!--                        <button class="btn btn-primary p-2 w-50" style="min-width: 100px" (click)="onFinish(order.id) ">-->
+<!--                          Hoàn thành-->
+<!--                        </button>-->
+<!--                        <button class="btn btn-danger p-2 w-50 mt-1" style="min-width: 100px"-->
+<!--                                (click)="onRevoke(order.id)">Thu hồi-->
+<!--                        </button>-->
+<!--                      </div>-->
+<!--                    </td>-->
+<!--                  </tr>-->
+<!--                  </tbody>-->
+<!--                </table>-->
+<!--                <mat-paginator [pageSizeOptions]="[10,25,50,100]" showFirstLastButtons [pageSize]="pageSize"-->
+<!--                               [length]="totalItems" (page)=" onChangePage($event)"></mat-paginator>-->
+<!--              </div>-->
+
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--      </div>-->
+<!--      &lt;!&ndash; END ROW &ndash;&gt;-->
+
+<!--    </div>-->
+<!--    &lt;!&ndash; container-fluid &ndash;&gt;-->
+
+<!--  </div>-->
+<!--  &lt;!&ndash; content &ndash;&gt;-->
+
+<!--</div>-->
+
+

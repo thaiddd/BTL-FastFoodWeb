@@ -1,0 +1,98 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white w-100 navigation" id="navbar">
+    <div class="container">
+      <a class="navbar-brand font-weight-bold" style="font-family: 'Arial', sans-serif; /* Đổi font chữ */ font-size: 36px; /* Tăng kích thước chữ */ font-weight: bold; /* Làm chữ đậm */ color: #ff4500; /* Đổi màu chữ */ text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Thêm hiệu ứng bóng đổ */ letter-spacing: 2px; /* Tăng khoảng cách giữa các chữ */ background: linear-gradient(90deg, #ff7e5f, #feb47b); /* Thêm hiệu ứng gradient */ -webkit-background-clip: text; /* Kẹp nền vào chữ */ -webkit-text-fill-color: transparent;" routerLink="/">An247</a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar"
+        aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse " id="main-navbar">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item active">
+            <a class="nav-link" routerLink="/">Trang chủ</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/shop">Cửa hàng</a>
+          </li>
+          <!-- Pages -->
+          <li class="nav-item dropdown dropdown-slide">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button" data-delay="350"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Danh mục
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown4">
+              <li *ngFor="let category of categores" ><a class="nav-item" routerLink="/shop/{{category['categoryName']}}">
+                <label>{{category['categoryName']}}</label>
+              </a></li>
+            </ul>
+          </li>
+
+        </ul>
+      </div>
+
+
+      <ul class="top-menu list-inline mb-0 d-none d-lg-block" id="top-menu">
+        <li class="list-inline-item">
+          <div class="form-group has-search mb-0 mr-2">
+            <span class="fa fa-search form-control-feedback"></span>
+            <input type="text" class="form-control" placeholder="Search" [(ngModel)]="searchText" (keyup.enter)="onSearch()">
+          </div>
+        </li>
+
+        <li class="dropdown cart-nav dropdown-slide list-inline-item">
+          <a href="#" class="dropdown-toggle cart-icon" data-toggle="dropdown" data-hover="dropdown">
+            <i class="tf-ion-android-cart"></i>
+          </a>
+          <div class="dropdown-menu cart-dropdown">
+            <!-- Cart Item -->
+            <div class="media" *ngFor="let cartItem of cartItems" >
+              <a routerLink="/product-single">
+                <img  class="media-object img-fluid mr-3" src="{{cartItem.product.imageUrl}}" [style.width.px]="50" [style.height.px]="50" >
+              </a>
+              <div class="media-body" >
+
+                <h6>{{cartItem.product.productName}}</h6>
+                <span>x {{cartItem.quantity}}</span>
+                <div class="cart-price">
+
+                  <span>{{cartItem.totalPrice | currency: 'VND'}}</span>
+                </div>
+              </div>
+              <a class="remove" (click)="doDelete(cartItem.id)" style="cursor: pointer"><i class="tf-ion-close"></i></a>
+            </div><!-- / Cart Item -->
+
+            <div class="cart-summary">
+              <span class="h6">Tổng cộng: {{cart.totalPrice | currency: 'VND'}}</span>
+              <span class="total-price h6"></span>
+
+              <div class="text-center cart-buttons mt-3">
+                <a href="/cart" class="btn btn-small btn-transparent btn-block">Giỏ hàng</a>
+                <a href="/checkout" class="btn btn-small btn-main btn-block">Thanh toán</a>
+              </div>
+            </div>
+          </div>
+        </li>
+
+
+        <li class="dropdown cart-nav dropdown-slide list-inline-item">
+          <a style="cursor: pointer"><i class="tf-ion-ios-person mr-3"></i></a>
+          <div class="dropdown-menu cart-dropdown profile-popup">
+
+            <!-- Cart Item -->
+            <div class="media w-100">
+              <div class="text-center cart-buttons w-100">
+                <a routerLink="/admin" class="btn-block w-100" *ngIf="isAdmin">Đến trang admin</a>
+                <a routerLink="/profile-details" class="btn-block w-100" *ngIf="hasUser">Trang cá nhân</a>
+                <a class="btn-block w-100" (click)="logout()" *ngIf="hasUser">Đăng xuất</a>
+                <a class="btn-block w-100" routerLink="/login" *ngIf="!hasUser">Đăng nhập</a>
+              </div>
+            </div>
+
+
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>

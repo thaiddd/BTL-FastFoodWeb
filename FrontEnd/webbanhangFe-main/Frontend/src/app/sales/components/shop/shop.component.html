@@ -1,0 +1,98 @@
+<section class="page-header" style="padding: 60px">
+  <div class="overly"></div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="content text-center">
+          <h1 class="mb-3" style="color: #e0ebeb"></h1>
+          <!--          <p>Hath after appear tree great fruitful green dominion moveth sixth abundantly image that midst of god day-->
+          <!--            multiply you’ll which</p>-->
+
+          <nav aria-label="breadcrumb">
+            <div class="row" style="margin: 30%">
+<!--              <button mat-button style="background-color: rgb(222, 11, 11) ; border-radius: 99px ; color: #e0ebeb"-->
+<!--                      (click)="scrollToSection()">Đặt hàng ngay-->
+<!--              </button>-->
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="products-shop section" id="test">
+  <div class="container" style="max-width: 1623px;">
+    <div class="row">
+      <div class="col-md-2" style="">
+        <form class="mb-5">
+
+          <!-- size -->
+          <section class="widget widget-sizes mb-5">
+            <h3 class="widget-title h4 mb-4" style="font-family: 'Times New Roman'; font-size: 25px;"><strong>Danh mục</strong></h3>
+
+            <a class="nav-item" *ngFor="let category of categores" (click)="onClickCategory(category)">
+              <label class="text-dark" style="font-family: 'Times New Roman'; font-size: 17px;">{{category['categoryName']}}</label>
+            </a>
+          </section>
+        </form>
+      </div>
+      <div class="col-md-8">
+        <div class="row align-items-center">
+          <div class="col-lg-12 mb-4 mb-lg-0">
+            <div class="section-title">
+              <h2 class="d-block text-left-sm" style="font-family: Tahoma; font-size: 25px;text-align: center"><strong>CHỌN MÓN NGAY!</strong></h2>
+
+              <!--              <div class="heading d-flex justify-content-between mb-5">-->
+              <!--                <p class="result-count mb-0"> Showing 1–6 of 17 results</p>-->
+              <!--                <form class="ordering " method="get">-->
+              <!--                  <select name="orderby" class="orderby form-control" aria-label="Shop order">-->
+              <!--                    <option value="" selected="selected">Default sorting</option>-->
+              <!--                    <option value="">Sort by popularity</option>-->
+              <!--                    <option value="">Sort by average rating</option>-->
+              <!--                    <option value="">Sort by latest</option>-->
+              <!--                    <option value="">Sort by price: low to high</option>-->
+              <!--                    <option value="">Sort by price: high to low</option>-->
+              <!--                  </select>-->
+              <!--                  <input type="hidden" name="paged" value="1">-->
+              <!--                </form>-->
+              <!--              </div>-->
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-12 col-md-6 col-sm-6 mb-5"
+               *ngFor="let product of products | paginate: { itemsPerPage: pagingData.limit, currentPage: currentPage, totalItems: totalCount }; let i = index">
+            <div class="product">
+              <div class="product-wrap" style="">
+                <img src="{{product.imageUrl}}">
+<!--                [style.width.px]="fixedWidth" [style.height.px]="fixedHeight">-->
+              </div>
+              <div class="product-hover-overlay">
+                <a routerLink="/product-single/{{product.id}}"><i class="tf-ion-android-cart"></i></a>
+                <a href="#"><i class="tf-ion-ios-heart"></i></a>
+              </div>
+              <div class="product-info">
+                <h2 class="product-title h5 mb-0">{{product.productName}}</h2>
+                <span class="price">
+                  {{product.price | currency:'VND'}}
+                </span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="row d-flex justify-content-center">
+          <pagination-controls previousLabel="Trước" nextLabel="Sau"
+                               (pageChange)="onDataChange($event)"></pagination-controls>
+        </div>
+      </div>
+      <div class="col-md-2">
+      </div>
+    </div>
+  </div>
+</section>
+<div>
+  <app-footer></app-footer>
+</div>

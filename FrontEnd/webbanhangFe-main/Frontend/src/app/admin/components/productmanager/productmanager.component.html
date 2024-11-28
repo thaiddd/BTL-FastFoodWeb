@@ -1,0 +1,100 @@
+<!-- ============================================================== -->
+<!-- Start right Content here -->
+<!-- ============================================================== -->
+<div class="content-page">
+  <!-- Start content -->
+  <div class="content">
+    <ng-template #customLoadingTemplate>
+      <div class="custom-class">
+      </div>
+    </ng-template>
+    <ngx-loading
+      [show]="loading"
+      [config]="{ backdropBorderRadius: '3px' }"
+      [template]="customLoadingTemplate"
+    ></ngx-loading>
+
+    <div class="container-fluid">
+      <div class="page-title-box">
+        <div class="row align-items-center">
+          <div class="col-sm-6">
+            <h4 class="page-title">Quản lý sản phẩm</h4>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-right">
+              <button type="button" class="rounded btn-success" style="height: 30px" (click)="onAddProduct()">Thêm sản
+                phẩm
+              </button>
+            </ol>
+          </div>
+        </div>
+        <!-- end row -->
+      </div>
+      <!-- end page-title -->
+
+      <!-- START ROW -->
+      <div class="row">
+        <div class="col-xl-12">
+          <div class="card m-b-30">
+            <div class="card-body">
+              <h4 class="mt-0 header-title">Bảng sản phẩm</h4>
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                  <tr>
+                    <th scope="col">STT</th>
+                    <th scope="col">Tên</th>
+                    <th scope="col">Ảnh</th>
+                    <th scope="col">Danh mục</th>
+                    <th scope="col">Giá</th>
+                    <th scope="col">Số lượng</th>
+                    <th scope="col">Chi tiết</th>
+                    <th scope="col">Thao tác</th>
+
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let item of products ;let i= index">
+                    <td>{{i + 1}}</td>
+                    <td>{{item.productName}}</td>
+                    <td><img src="{{item.imageUrl}}" [style.width.px]="fixedWidth" [style.height.px]="fixedHeight" ></td>
+                    <td>{{item.category.categoryName}}</td>
+                    <td>{{item.price}}</td>
+                    <td>{{item.quantity}}</td>
+                    <td>{{item.description}}</td>
+
+                    <td>
+                      <div class="d-flex flex-column">
+                        <button class="btn btn-primary p-2 w-50" (click)="onEditProduct(item)">Sửa</button>
+                        <button class="btn btn-danger p-2 w-50 mt-1" (click)="onDelete(item)">Xóa</button>
+                      </div>
+                    </td>
+                  </tr>
+                  </tbody>Sản phẩm
+                </table>
+                <mat-paginator [pageSizeOptions]="[10,25,50,100]" showFirstLastButtons [pageSize]="pageSize"
+                               [length]="totalItems" (page)=" onChangePage($event)"></mat-paginator>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- END ROW -->
+
+    </div>
+    <!-- container-fluid -->
+
+  </div>
+  <!-- content -->
+
+</div>
+<!-- ============================================================== -->
+<!-- End Right content here -->
+<!-- ============================================================== -->
+<!--<app-editprofile *ngIf="true"></app-editprofile>-->
+
+<app-productform [mode]="formMode" [isShow]="isShowForm" (isShowChange)="onIsShowFormChange($event)"
+                 (afterEdit)="onAfterEdit()" (afterAdd)="onAfterAdd()"
+                 [data]="productSelected" *ngIf="isShowForm"></app-productform>

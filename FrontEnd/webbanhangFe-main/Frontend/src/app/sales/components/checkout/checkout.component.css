@@ -1,0 +1,30 @@
+.method-icon {
+  margin-right: 12px;
+  margin-left: 12px;
+  object-fit: contain;
+  width: 32px;
+  height: 32px;
+}
+
+.form-check-input-ct {
+  width: 24px;
+  height: 24px;
+}
+
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  align-items: flex-start;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+.mat-form-field {
+  display: block;
+  position: relative;
+  flex: auto;
+  min-width: 0;
+  width: 676px!important;
+}
