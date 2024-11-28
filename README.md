@@ -1,5 +1,5 @@
 -Nhóm 14 tổ 10
--Dự án website bán đồ ăn nhanh trực tuyến
+-Dự án xây dựng website bán đồ ăn nhanh trực tuyến
 
 <!---
 thaiddd/thaiddd is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
